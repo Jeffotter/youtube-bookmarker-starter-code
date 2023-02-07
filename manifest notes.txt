@@ -1,22 +1,13 @@
 {
-    "name": "My YT Bookmarks",
+    "name": "My YT Bookmarks", //going to be the name of the extension 
     "version": "0.1.0",
     "description": "Saving timestamps in YT videos",
-    "permissions":[
-      "tabs",
-      "storage",
-      "scripting",
-      "alarms",
-      "webRequest",
-      "webNavigation",
-      "declarativeNetRequest",
-      "declarativeNetRequestFeedback"
-    ],
-    "host_permissions": ["https://*.youtube.com/*"],
+    "permissions": ["storage", "tabs"], //permissions to use the different API's 
+    "host_permissions": ["https://*.youtube.com/*"], //gives you the ability to send cors requests to certain host names
     "background": {
-      "service_worker": "background.js"
+      "service_worker": "background.js" //the main difference betweeen v3 and v2 is the service worker and the use of promises, service workers is seperate from main processes
     },
-    "content_scripts": [
+    "content_scripts": [ //These are scripts which run on whichever webpage we are on
       {
         "matches": ["https://*.youtube.com/*"],
         "js": ["contentScript.js"]
@@ -40,7 +31,7 @@
         "32": "assets/ext-icon.png"
       },
       "default_title": "My YT Bookmarks",
-      "default_popup": "popup.html"
+      "default_popup": "popup.html" //In this file you have the actual code for the popup
     },
     "manifest_version": 3
 }
